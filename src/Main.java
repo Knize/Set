@@ -4,6 +4,17 @@
 public class Main {
 
     public static void main(String[] args) {
+        SetOfIntegers bigSet = new SetOfIntegers();
+        for (int i = 0; i < 100; i++) {
+            bigSet.add(i);
+        }
+
+        SetOfIntegers reallyBigSet = new SetOfIntegers();
+        for (int i = 0; i < 100000; i++) {
+            reallyBigSet.add(i);
+        }
+
+
         SetOfIntegers set = new SetOfIntegers();
         set.add(1);
         set.add(2);
@@ -29,6 +40,23 @@ public class Main {
         System.out.println("Set 'dif':");
         dif.print();
 
+        SetOfIntegers intersect = SetAlgebra.intersectNaive(set, set1);
+        System.out.println("Set 'intersect':");
+        intersect.print();
+
+        System.out.println("Computing 'intersectNaive':");
+        SetOfIntegers bigIntersect1 = SetAlgebra.intersectNaive(bigSet, reallyBigSet);
+        System.out.println("Set 'intersectNaive':");
+        bigIntersect1.print();
+
+        System.out.println("Computing 'intersectOptimized':");
+        SetOfIntegers bigIntersect2 = SetAlgebra.intersectOptimized(bigSet, reallyBigSet);
+        System.out.println("Set 'intersectOptimized':");
+        bigIntersect2.print();
+
+        SetOfIntegers addition = SetAlgebra.addition(bigSet);
+        System.out.println("Set 'addition':");
+        addition.print();
 
     }
 }
